@@ -11,7 +11,7 @@ OUT_FILE = 'assets/2019-06-17-pronunciation-playground.html'
 def main():
     createOutFolder(OUT_FOLDER)
     words = processWords(IN_WORDS)
-    # TODO: order words alpha
+    words = sorted(words, key = lambda x: x.getWord())
     # TODO: remove duplicates
     html = generateHtml(words)
     saveHtml(html, OUT_FILE)

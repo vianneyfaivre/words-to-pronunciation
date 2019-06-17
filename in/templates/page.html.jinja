@@ -15,13 +15,15 @@ hidden: true
             {% for word in words %}
             <tr>
                 {% if word.isSingle() %}
-                    <td>
-                        <span class='word'>{{word.getWord()}}</span> 🔊
+                    <td class='word' word='{{word.getWord()}}'>
+                        {{word.getWord()}} 🔊
                     </td>
                 {% else %}
                     <td>
                         {% for part in word.getWords() %}
-                            <span class='word'>{{part}}</span> 🔊
+                            <span class='word' word='{{word.getWord()}}'>
+                                {{part}} 🔊
+                            </span>
                             {% if not loop.last %}
                                 <span class='vs'>vs</span>
                             {% endif %}
