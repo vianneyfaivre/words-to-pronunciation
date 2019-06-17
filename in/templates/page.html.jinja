@@ -1,0 +1,42 @@
+---
+layout: default
+title: Pronunciation Playground
+description: A list of words and how they should be pronounced 
+categories: [things]
+hidden: true
+---
+<div class='pronunciation'>
+    <h1>Pronunciation Playground</h1>
+
+    <p class='intro'>Click on words and listen to the "correct" way to pronounce them.</p>
+
+    <table class='words'>
+        <tbody>
+            {% for word in words %}
+            <tr>
+                {% if word.isSingle() %}
+                    <td>
+                        <span class='word'>{{word.getWord()}}</span> 🔊
+                    </td>
+                {% else %}
+                    <td>
+                        {% for part in word.getWords() %}
+                            <span class='word'>{{part}}</span> 🔊
+                            {% if not loop.last %}
+                                <span class='vs'>vs</span>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p class='bottom-note'>
+        Generated with 
+        <a href="https://github.com/vianneyfaivre/words-to-pronunciation">Words to Pronunciation</a>
+    </p>
+
+</div>
+<script src="/assets/js/pronunciation.js"></script>
