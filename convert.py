@@ -12,7 +12,6 @@ def main():
     createOutFolder(OUT_FOLDER)
     words = processWords(IN_WORDS)
     words = sorted(words, key = lambda x: x.getWord())
-    # TODO: remove duplicates
     html = generateHtml(words)
     saveHtml(html, OUT_FILE)
 
@@ -59,19 +58,23 @@ def processWords(wordsFilePath):
                 if not found:
                     wordsNotFound.append(wordPart)
                 else:
-                    resolvedWords.append(resolvedWord)
+                    addResolvedWord(resolvedWords, resolvedWord)
         # Simple case (one word 'word1')
         else:
             found = processWord(word)
             if not found:
                 wordsNotFound.append(word)
             else:
-                resolvedWords.append(resolvedWord)
+                addResolvedWord(resolvedWords, resolvedWord)
 
     if len(wordsNotFound) > 0:
         print(f"The following words have not been found: {wordsNotFound}")
 
     return resolvedWords
+
+def addResolvedWord(resolvedWords, resolvedWord):
+    if resolvedWord not in resolvedWords:
+        resolvedWords.append(resolvedWord)
 
 def processWord(word): 
     """
