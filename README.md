@@ -1,6 +1,8 @@
 # Words to Pronunciation
 
-This script grab words as audio file from the Internet. Then it generates a HTML document (actually it is a Jekyll HTML document) that lists all those words.
+This script converts words to audio files. 
+
+It also generates a HTML document (actually it is a Jekyll HTML document) that lists all those words.
 
 The result can be seen in my website https://vianneyfaivre.com/things/pronunciation-playground
 
