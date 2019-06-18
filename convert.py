@@ -11,7 +11,6 @@ OUT_FILE = 'assets/2019-06-17-pronunciation-playground.html'
 def main():
     createOutFolder(OUT_FOLDER)
     words = processWords(IN_WORDS)
-    words = sorted(words, key = lambda x: x.getWord())
     html = generateHtml(words)
     saveHtml(html, OUT_FILE)
 
@@ -70,6 +69,8 @@ def processWords(wordsFilePath):
     if len(wordsNotFound) > 0:
         print(f"The following words have not been found: {wordsNotFound}")
 
+    # Sort Alphabetically
+    resolvedWords = sorted(resolvedWords, key = lambda x: x.getWord())
     return resolvedWords
 
 def addResolvedWord(resolvedWords, resolvedWord):
